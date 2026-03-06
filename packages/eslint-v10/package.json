@@ -9,6 +9,7 @@
   "devDependencies": {
     "@eslint/js": "10",
     "eslint": "10",
+    "globals": "^17.4.0",
     "hermes-eslint": "latest"
   }
 }

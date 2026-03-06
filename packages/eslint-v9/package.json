@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "eslint": "9",
+    "globals": "^17.4.0",
     "hermes-eslint": "latest"
   }
 }

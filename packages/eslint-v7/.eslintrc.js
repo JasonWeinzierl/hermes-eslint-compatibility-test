@@ -1,6 +1,7 @@
 // @ts-check
 
 const expectedWarnings = require("../../fixtures/expected-warnings");
+const flowGlobals = require("../../fixtures/flow-globals");
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
@@ -15,6 +16,7 @@ const config = {
     es6: true,
     node: true,
   },
+  globals: flowGlobals,
   rules: expectedWarnings,
 };
 
