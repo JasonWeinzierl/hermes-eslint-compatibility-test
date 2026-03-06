@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "lint": "eslint --config .eslintrc.js ../../fixtures/sample.js"
+    "lint": "eslint --config .eslintrc.js sample.js"
   },
   "devDependencies": {
     "@types/eslint": "6.8.1",
