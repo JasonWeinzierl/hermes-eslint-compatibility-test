@@ -1,7 +1,19 @@
 {
   "name": "eslint-compatibility-test",
   "packageManager": "yarn@4.13.0+sha512.5c20ba010c99815433e5c8453112165e673f1c7948d8d2b267f4b5e52097538658388ebc9f9580656d9b75c5cc996f990f611f99304a2197d4c56d21eea370e7",
+  "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "test:supported": "yarn workspaces foreach --all --exclude eslint-v10 run lint",
+    "test:supported-verbose": "yarn test:supported --debug",
+    "test:v10": "yarn workspace eslint-v10 run lint",
+    "test:v9": "yarn workspace eslint-v9 run lint",
+    "test:v8": "yarn workspace eslint-v8 run lint",
+    "test:v7": "yarn workspace eslint-v7 run lint",
+    "test:v6": "yarn workspace eslint-v6 run lint",
+    "test:v5": "yarn workspace eslint-v5 run lint",
+    "test:v4": "yarn workspace eslint-v4 run lint"
+  }
 }

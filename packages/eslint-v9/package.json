@@ -1,0 +1,13 @@
+{
+  "name": "eslint-v9",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "lint": "eslint"
+  },
+  "devDependencies": {
+    "eslint": "9",
+    "hermes-eslint": "latest"
+  }
+}

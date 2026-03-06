@@ -1,0 +1,13 @@
+{
+  "name": "eslint-v8",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint --config .eslintrc.js ../../fixtures/sample.js"
+  },
+  "devDependencies": {
+    "@types/eslint": "8.56.12",
+    "eslint": "8",
+    "hermes-eslint": "latest"
+  }
+}

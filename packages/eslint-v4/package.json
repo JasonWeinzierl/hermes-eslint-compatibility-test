@@ -1,0 +1,13 @@
+{
+  "name": "eslint-v4",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint --config .eslintrc.js ../../fixtures/sample.js"
+  },
+  "devDependencies": {
+    "@types/eslint": "4.16.8",
+    "eslint": "4",
+    "hermes-eslint": "latest"
+  }
+}
