@@ -6,6 +6,7 @@ type ActiveUser = {|
   +kind: "active",
   +id: UserId,
   +age?: number,
+  +metadata: ?string,
   +roles: $ReadOnlyArray<string>,
 |};
 
@@ -31,7 +32,7 @@ function formatUser(user: User): Result<string> {
   if (user.kind == "active") {
     const isAdmin = user.roles.includes("admin");
     console.log("active user", isAdmin);
-    return { ok: true, value: `${user.id}:${getAgeLabel(user)}` };
+    return { ok: true, value: `${(user.id: string)}:${getAgeLabel(user)}` };
   }
 
   if (user.reason.length > 0) {
@@ -54,8 +55,11 @@ const currentUser: User = {
   kind: "active",
   id: "u1",
   age: 42,
+  metadata: null,
   roles: ["author"],
 };
 
 unknownGlobalFn();
 printResult(formatUser(currentUser));
+
+export type { User, Result };
