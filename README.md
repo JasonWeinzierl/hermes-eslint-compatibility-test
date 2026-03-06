@@ -1,4 +1,4 @@
-# eslint-compatibility-test
+# hermes-eslint-compatibility-test
 
 Test `hermes-eslint` parser behavior across ESLint majors.
 
