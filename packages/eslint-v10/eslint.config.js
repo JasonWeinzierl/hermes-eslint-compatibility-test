@@ -2,18 +2,21 @@
 
 const js = require("@eslint/js");
 const hermesParser = require("hermes-eslint");
+const expectedWarnings = require("../../fixtures/expected-warnings");
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 const config = [
   {
-    basePath: "../../fixtures",
     files: ["sample.js"],
     languageOptions: {
       parser: hermesParser,
       ecmaVersion: "latest",
       sourceType: "module",
     },
-    rules: js.configs.recommended.rules,
+    rules: {
+      ...js.configs.recommended.rules,
+      ...expectedWarnings,
+    },
   },
 ];
 

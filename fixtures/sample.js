@@ -1,14 +1,61 @@
 // @flow
 
-type User = {
-  id: string,
-  age?: number,
-};
+opaque type UserId = string;
 
-function formatUser(user: User): string {
+type ActiveUser = {| 
+  +kind: "active",
+  +id: UserId,
+  +age?: number,
+  +roles: $ReadOnlyArray<string>,
+|};
+
+type DisabledUser = {| 
+  +kind: "disabled",
+  +id: UserId,
+  +reason: string,
+|};
+
+type User = ActiveUser | DisabledUser;
+
+type Result<T> =
+  | {| +ok: true, +value: T |}
+  | {| +ok: false, +error: string |};
+
+function getAgeLabel(user: ActiveUser): string {
+  const fallbackAge = 99;
   const ageLabel = user.age != null ? String(user.age) : "unknown";
-  return `${user.id}:${ageLabel}`;
+  return ageLabel;
 }
 
-const currentUser: User = { id: "u1", age: 42 };
-formatUser(currentUser);
+function formatUser(user: User): Result<string> {
+  if (user.kind == "active") {
+    const isAdmin = user.roles.includes("admin");
+    console.log("active user", isAdmin);
+    return { ok: true, value: `${user.id}:${getAgeLabel(user)}` };
+  }
+
+  if (user.reason.length > 0) {
+    return { ok: false, error: `${user.id}:${user.reason}` };
+  }
+
+  return { ok: false, error: "missing reason" };
+}
+
+function printResult<T>(result: Result<T>): void {
+  if (result.ok) {
+    console.log(result.value);
+    return;
+  }
+
+  console.log(result.error);
+}
+
+const currentUser: User = {
+  kind: "active",
+  id: "u1",
+  age: 42,
+  roles: ["author"],
+};
+
+unknownGlobalFn();
+printResult(formatUser(currentUser));

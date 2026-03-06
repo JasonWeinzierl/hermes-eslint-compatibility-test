@@ -1,5 +1,7 @@
 // @ts-check
 
+const expectedWarnings = require("../../fixtures/expected-warnings");
+
 /** @type {import("eslint").Linter.Config} */
 const config = {
   root: true,
@@ -13,6 +15,7 @@ const config = {
     es6: true,
     node: true,
   },
+  rules: expectedWarnings,
 };
 
 module.exports = config;
